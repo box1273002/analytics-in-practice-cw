@@ -42,8 +42,14 @@ def train(x: NDArray, y: NDArray):
         )
 
 
-campaign_data = pd.read_csv("campaign_data.csv")
-cleaned_data = build_silver(campaign_data)
-x, y = extract_features(cleaned_data), extract_labels(cleaned_data)
-# TODO train test split
-model = train(x, y)
+if __name__ == "__main__":
+    campaign_data = pd.read_csv("campaign_data.csv")
+    print("===== Cleaning Data =====")
+    cleaned_data = build_silver(campaign_data)
+    print("===== Extracting Features =====")
+    x = extract_features(cleaned_data)
+    y = extract_labels(cleaned_data)
+    print("===== Splitting Training and Testing Data =====")
+    x_train, y_train = x, y
+    print("===== Training Model =====")
+    model = train(x_train, y_train)
