@@ -11,15 +11,22 @@ def build_silver(bronze: pd.DataFrame) -> pd.DataFrame:
     return bronze.copy()
 
 
-def build_features(
+def extract_features(
     silver: pd.DataFrame,
-) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
+) -> NDArray[np.float64]:
     """
     Transforms the cleaned dataset, removing unnecessary info
-    and converting columns into numeric features and labels ready
+    and converting columns into numeric features ready
     for training.
     """
-    return (np.asarray([[]]), np.asarray([[]]))
+    return np.asarray([[]])
+
+
+def extract_labels(silver: pd.DataFrame) -> NDArray[np.float64]:
+    """
+    Extracts labels from the cleaned dataset.
+    """
+    return np.asarray([[]])
 
 
 def train(x: NDArray, y: NDArray):
@@ -37,6 +44,6 @@ def train(x: NDArray, y: NDArray):
 
 campaign_data = pd.read_csv("campaign_data.csv")
 cleaned_data = build_silver(campaign_data)
-x, y = build_features(cleaned_data)
+x, y = extract_features(cleaned_data), extract_labels(cleaned_data)
 # TODO train test split
 model = train(x, y)
