@@ -1,5 +1,5 @@
 import pandas as pd
-from numpy._typing import NDArray
+from numpy.typing import NDArray
 import numpy as np
 
 
